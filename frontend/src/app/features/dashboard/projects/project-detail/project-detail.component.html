@@ -10,63 +10,153 @@
     <div class="header-content">
       <div class="title-section">
         <span nz-icon nzType="project" class="title-icon"></span>
-        <div>
+        <div class="title-info">
           <div class="title-row">
             <h1>{{ project.name }}</h1>
-            <nz-tag [nzColor]="getStatusColor(project.status)">{{ project.status }}</nz-tag>
+            <nz-tag [nzColor]="getStatusColor(project.status)" class="status-tag">
+              <span nz-icon nzType="check-circle" nzTheme="fill" *ngIf="project.status === 'Active'"></span>
+              <span nz-icon nzType="clock-circle" nzTheme="fill" *ngIf="project.status === 'On Hold'"></span>
+              <span nz-icon nzType="close-circle" nzTheme="fill" *ngIf="project.status === 'Inactive'"></span>
+              <span nz-icon nzType="check-circle" nzTheme="fill" *ngIf="project.status === 'Completed'"></span>
+              {{ project.status }}
+            </nz-tag>
           </div>
-          <p class="project-code">{{ project.code }}</p>
+          <div class="project-meta">
+            <span class="meta-item">
+              <span nz-icon nzType="code" class="meta-icon"></span>
+              {{ project.code }}
+            </span>
+            <span class="meta-item" *ngIf="project.startDate">
+              <span nz-icon nzType="calendar" class="meta-icon"></span>
+              {{ project.startDate | date: 'dd MMM yyyy' }}
+            </span>
+            <span class="meta-item">
+              <span nz-icon nzType="appstore" class="meta-icon"></span>
+              {{ project.workstreamCount }} Workstreams
+            </span>
+            <span class="meta-item">
+              <span nz-icon nzType="flag" class="meta-icon"></span>
+              {{ project.milestoneCount }} Milestones
+            </span>
+          </div>
         </div>
+      </div>
+      <div class="header-actions">
+        <button nz-button nzType="default" class="action-btn">
+          <span nz-icon nzType="edit"></span>
+          Edit
+        </button>
+        <button nz-button nzType="default" class="action-btn">
+          <span nz-icon nzType="share-alt"></span>
+          Share
+        </button>
+        <button nz-button nzType="primary" class="action-btn-primary">
+          <span nz-icon nzType="plus"></span>
+          Add Workstream
+        </button>
       </div>
     </div>
   </div>
 
-  <nz-tabs nzType="card" class="project-tabs">
-    <nz-tab nzTitle="Overview">
+  <nz-tabs nzType="line" class="project-tabs" nzSize="large">
+    <nz-tab [nzTitle]="overviewTitle">
+      <ng-template #overviewTitle>
+        <span nz-icon nzType="dashboard" class="tab-icon"></span>
+        Overview
+      </ng-template>
       <div class="tab-content">
-        <nz-card nzTitle="Project Information" class="info-card">
-          <nz-descriptions nzBordered [nzColumn]="2">
-            <nz-descriptions-item nzTitle="Project Code">{{ project.code }}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Status">
-              <nz-tag [nzColor]="getStatusColor(project.status)">{{ project.status }}</nz-tag>
-            </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Start Date" [nzSpan]="1">
-              {{ project.startDate ? (project.startDate | date: 'dd MMMM yyyy') : 'Not set' }}
-            </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="End Date" [nzSpan]="1">
-              {{ project.endDate ? (project.endDate | date: 'dd MMMM yyyy') : 'Not set' }}
-            </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Description" [nzSpan]="2">
-              {{ project.description || 'No description provided' }}
-            </nz-descriptions-item>
-          </nz-descriptions>
-        </nz-card>
-
-        <div class="stats-grid">
-          <nz-card class="stat-card">
-            <div class="stat-icon workstreams">
-              <span nz-icon nzType="branches"></span>
-            </div>
-            <div class="stat-content">
-              <span class="stat-value">{{ project.workstreamCount }}</span>
-              <span class="stat-label">Workstreams</span>
-            </div>
+        <div class="overview-grid">
+          <nz-card nzTitle="Project Information" class="info-card" [nzExtra]="infoExtra">
+            <ng-template #infoExtra>
+              <span nz-icon nzType="info-circle" class="card-icon"></span>
+            </ng-template>
+            <nz-descriptions nzBordered [nzColumn]="2">
+              <nz-descriptions-item nzTitle="Project Code">
+                <span class="code-badge">{{ project.code }}</span>
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="Status">
+                <nz-tag [nzColor]="getStatusColor(project.status)">{{ project.status }}</nz-tag>
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="Start Date" [nzSpan]="1">
+                <span nz-icon nzType="calendar" class="desc-icon"></span>
+                {{ project.startDate ? (project.startDate | date: 'dd MMMM yyyy') : 'Not set' }}
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="End Date" [nzSpan]="1">
+                <span nz-icon nzType="calendar" class="desc-icon"></span>
+                {{ project.endDate ? (project.endDate | date: 'dd MMMM yyyy') : 'Not set' }}
+              </nz-descriptions-item>
+              <nz-descriptions-item nzTitle="Description" [nzSpan]="2">
+                <span class="description-text">{{ project.description || 'No description provided' }}</span>
+              </nz-descriptions-item>
+            </nz-descriptions>
           </nz-card>
 
-          <nz-card class="stat-card">
-            <div class="stat-icon milestones">
-              <span nz-icon nzType="flag"></span>
-            </div>
-            <div class="stat-content">
-              <span class="stat-value">{{ project.milestoneCount }}</span>
-              <span class="stat-label">Milestones</span>
+          <nz-card nzTitle="Quick Stats" class="info-card stats-summary" [nzExtra]="statsExtra">
+            <ng-template #statsExtra>
+              <span nz-icon nzType="bar-chart" class="card-icon"></span>
+            </ng-template>
+            <div class="quick-stats">
+              <div class="quick-stat-item">
+                <div class="quick-stat-icon workstream-color">
+                  <span nz-icon nzType="branches"></span>
+                </div>
+                <div class="quick-stat-info">
+                  <div class="quick-stat-value">{{ project.workstreamCount }}</div>
+                  <div class="quick-stat-label">Total Workstreams</div>
+                </div>
+              </div>
+              <div class="quick-stat-item">
+                <div class="quick-stat-icon milestone-color">
+                  <span nz-icon nzType="flag"></span>
+                </div>
+                <div class="quick-stat-info">
+                  <div class="quick-stat-value">{{ project.milestoneCount }}</div>
+                  <div class="quick-stat-label">Total Milestones</div>
+                </div>
+              </div>
+              <div class="quick-stat-item">
+                <div class="quick-stat-icon team-color">
+                  <span nz-icon nzType="team"></span>
+                </div>
+                <div class="quick-stat-info">
+                  <div class="quick-stat-value">0</div>
+                  <div class="quick-stat-label">Team Members</div>
+                </div>
+              </div>
             </div>
           </nz-card>
         </div>
+
+        <nz-card nzTitle="Activity Timeline" class="info-card timeline-card" [nzExtra]="timelineExtra">
+          <ng-template #timelineExtra>
+            <span nz-icon nzType="history" class="card-icon"></span>
+          </ng-template>
+          <div class="timeline-content">
+            <div class="timeline-item">
+              <div class="timeline-marker created"></div>
+              <div class="timeline-info">
+                <div class="timeline-title">Project Created</div>
+                <div class="timeline-date">{{ project.startDate ? (project.startDate | date: 'dd MMM yyyy, HH:mm') : 'Date not available' }}</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-marker active"></div>
+              <div class="timeline-info">
+                <div class="timeline-title">Currently {{ project.status }}</div>
+                <div class="timeline-date">Last updated today</div>
+              </div>
+            </div>
+          </div>
+        </nz-card>
       </div>
     </nz-tab>
 
-    <nz-tab nzTitle="Workstreams">
+    <nz-tab [nzTitle]="workstreamsTitle">
+      <ng-template #workstreamsTitle>
+        <span nz-icon nzType="branches" class="tab-icon"></span>
+        Workstreams
+        <nz-badge [nzCount]="project.workstreamCount" [nzStyle]="{ backgroundColor: '#722ED1', marginLeft: '8px' }"></nz-badge>
+      </ng-template>
       <div class="tab-content">
         <nz-card>
           <p class="empty-state">Workstreams management coming soon...</p>
@@ -74,7 +164,12 @@
       </div>
     </nz-tab>
 
-    <nz-tab nzTitle="Milestones">
+    <nz-tab [nzTitle]="milestonesTitle">
+      <ng-template #milestonesTitle>
+        <span nz-icon nzType="flag" class="tab-icon"></span>
+        Milestones
+        <nz-badge [nzCount]="project.milestoneCount" [nzStyle]="{ backgroundColor: '#13C2C2', marginLeft: '8px' }"></nz-badge>
+      </ng-template>
       <div class="tab-content">
         <nz-card>
           <p class="empty-state">Milestones management coming soon...</p>
@@ -82,7 +177,11 @@
       </div>
     </nz-tab>
 
-    <nz-tab nzTitle="Team">
+    <nz-tab [nzTitle]="teamTitle">
+      <ng-template #teamTitle>
+        <span nz-icon nzType="team" class="tab-icon"></span>
+        Team
+      </ng-template>
       <div class="tab-content">
         <nz-card>
           <p class="empty-state">Team management coming soon...</p>
@@ -90,7 +189,11 @@
       </div>
     </nz-tab>
 
-    <nz-tab nzTitle="Documents">
+    <nz-tab [nzTitle]="documentsTitle">
+      <ng-template #documentsTitle>
+        <span nz-icon nzType="file-text" class="tab-icon"></span>
+        Documents
+      </ng-template>
       <div class="tab-content">
         <nz-card>
           <p class="empty-state">Document management coming soon...</p>
