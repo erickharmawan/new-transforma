@@ -1,0 +1,42 @@
+.page-container {
+  padding: 24px;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+h1 {
+  color: #003D79;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+:host ::ng-deep .ant-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 61, 121, 0.08);
+  border: 1px solid #E8EBF0;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.15);
+  }
+}
+
+:host ::ng-deep .ant-card-head {
+  background: #F0F5FF;
+  border-bottom: 2px solid #E6F0FF;
+}
+
+:host ::ng-deep .ant-card-head-title {
+  color: #003D79;
+  font-weight: 600;
+}

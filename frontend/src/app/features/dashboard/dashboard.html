@@ -1,0 +1,79 @@
+<nz-layout class="app-layout">
+  <!-- Header -->
+  <nz-header class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="/logo-only.png" alt="Logo" class="header-logo" />
+        <span class="app-name">TRANSFORMA</span>
+      </div>
+      
+      <div class="user-section">
+        <nz-avatar nzIcon="user" [nzSize]="40"></nz-avatar>
+        <span class="user-name" *ngIf="currentUser$ | async as user">{{ user.name }}</span>
+        <a nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
+          <span nz-icon nzType="down"></span>
+        </a>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item (click)="logout()">
+              <span nz-icon nzType="logout"></span>
+              Logout
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+      </div>
+    </div>
+  </nz-header>
+
+  <nz-layout class="main-layout">
+    <!-- Sidebar -->
+    <nz-sider
+      class="sidebar"
+      nzCollapsible
+      [(nzCollapsed)]="isCollapsed"
+      [nzWidth]="256"
+    >
+      <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/dashboard/home">
+            <span nz-icon nzType="dashboard"></span>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/dashboard/projects">
+            <span nz-icon nzType="folder"></span>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/dashboard/milestones">
+            <span nz-icon nzType="check-square"></span>
+            <span>Milestones</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/dashboard/users">
+            <span nz-icon nzType="team"></span>
+            <span>Users</span>
+          </a>
+        </li>
+        <li nz-menu-item nzMatchRouter>
+          <a routerLink="/dashboard/reports">
+            <span nz-icon nzType="bar-chart"></span>
+            <span>Reports</span>
+          </a>
+        </li>
+      </ul>
+    </nz-sider>
+
+    <!-- Content -->
+    <nz-layout class="content-layout">
+      <nz-content class="content">
+        <div class="inner-content">
+          <router-outlet></router-outlet>
+        </div>
+      </nz-content>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>

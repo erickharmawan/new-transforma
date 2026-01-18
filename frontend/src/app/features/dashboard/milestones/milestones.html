@@ -1,0 +1,49 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Milestones</h1>
+    <button nz-button nzType="primary">
+      <span nz-icon nzType="plus"></span>
+      Add Milestone
+    </button>
+  </div>
+  
+  <nz-table #milestoneTable [nzData]="milestones" [nzLoading]="loading">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Project</th>
+        <th>Target Date</th>
+        <th>Progress</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let milestone of milestoneTable.data">
+        <td>{{ milestone.name }}</td>
+        <td>{{ milestone.workstreamName || '-' }}</td>
+        <td>{{ milestone.plannedEndDate ? (milestone.plannedEndDate | date: 'dd MMM yyyy') : '-' }}</td>
+        <td>
+          <nz-progress 
+            [nzPercent]="milestone.progress || 0" 
+            [nzStatus]="milestone.progress === 100 ? 'success' : 'active'"
+            nzSize="small">
+          </nz-progress>
+        </td>
+        <td>
+          <nz-tag [nzColor]="getStatusColor(milestone.status)">
+            {{ getStatusLabel(milestone.status) }}
+          </nz-tag>
+        </td>
+        <td>
+          <button nz-button nzType="link" nzSize="small">
+            <span nz-icon nzType="eye"></span>
+          </button>
+          <button nz-button nzType="link" nzSize="small">
+            <span nz-icon nzType="edit"></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

@@ -1,0 +1,105 @@
+<div class="page-container" *ngIf="!loading && project">
+  <div class="page-header">
+    <button nz-button nzType="link" (click)="goBack()" class="back-button">
+      <span nz-icon nzType="arrow-left"></span>
+      Back to Projects
+    </button>
+  </div>
+
+  <div class="project-header">
+    <div class="header-content">
+      <div class="title-section">
+        <span nz-icon nzType="project" class="title-icon"></span>
+        <div>
+          <div class="title-row">
+            <h1>{{ project.name }}</h1>
+            <nz-tag [nzColor]="getStatusColor(project.status)">{{ project.status }}</nz-tag>
+          </div>
+          <p class="project-code">{{ project.code }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nz-tabs nzType="card" class="project-tabs">
+    <nz-tab nzTitle="Overview">
+      <div class="tab-content">
+        <nz-card nzTitle="Project Information" class="info-card">
+          <nz-descriptions nzBordered [nzColumn]="2">
+            <nz-descriptions-item nzTitle="Project Code">{{ project.code }}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Status">
+              <nz-tag [nzColor]="getStatusColor(project.status)">{{ project.status }}</nz-tag>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Start Date" [nzSpan]="1">
+              {{ project.startDate ? (project.startDate | date: 'dd MMMM yyyy') : 'Not set' }}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="End Date" [nzSpan]="1">
+              {{ project.endDate ? (project.endDate | date: 'dd MMMM yyyy') : 'Not set' }}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Description" [nzSpan]="2">
+              {{ project.description || 'No description provided' }}
+            </nz-descriptions-item>
+          </nz-descriptions>
+        </nz-card>
+
+        <div class="stats-grid">
+          <nz-card class="stat-card">
+            <div class="stat-icon workstreams">
+              <span nz-icon nzType="branches"></span>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">{{ project.workstreamCount }}</span>
+              <span class="stat-label">Workstreams</span>
+            </div>
+          </nz-card>
+
+          <nz-card class="stat-card">
+            <div class="stat-icon milestones">
+              <span nz-icon nzType="flag"></span>
+            </div>
+            <div class="stat-content">
+              <span class="stat-value">{{ project.milestoneCount }}</span>
+              <span class="stat-label">Milestones</span>
+            </div>
+          </nz-card>
+        </div>
+      </div>
+    </nz-tab>
+
+    <nz-tab nzTitle="Workstreams">
+      <div class="tab-content">
+        <nz-card>
+          <p class="empty-state">Workstreams management coming soon...</p>
+        </nz-card>
+      </div>
+    </nz-tab>
+
+    <nz-tab nzTitle="Milestones">
+      <div class="tab-content">
+        <nz-card>
+          <p class="empty-state">Milestones management coming soon...</p>
+        </nz-card>
+      </div>
+    </nz-tab>
+
+    <nz-tab nzTitle="Team">
+      <div class="tab-content">
+        <nz-card>
+          <p class="empty-state">Team management coming soon...</p>
+        </nz-card>
+      </div>
+    </nz-tab>
+
+    <nz-tab nzTitle="Documents">
+      <div class="tab-content">
+        <nz-card>
+          <p class="empty-state">Document management coming soon...</p>
+        </nz-card>
+      </div>
+    </nz-tab>
+  </nz-tabs>
+</div>
+
+<div class="loading-container" *ngIf="loading">
+  <nz-spin nzSize="large"></nz-spin>
+</div>

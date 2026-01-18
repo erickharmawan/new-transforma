@@ -1,0 +1,30 @@
+:host ::ng-deep .ant-modal-header {
+  background-color: #0066CC;
+  border-bottom: 2px solid #003D79;
+}
+
+:host ::ng-deep .ant-modal-title {
+  color: white;
+  font-weight: 600;
+}
+
+:host ::ng-deep .ant-modal-close {
+  color: white;
+}
+
+:host ::ng-deep .ant-modal-close:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+:host ::ng-deep .ant-modal-body {
+  padding: 24px;
+}
+
+:host ::ng-deep .ant-form-item {
+  margin-bottom: 16px;
+}
+
+:host ::ng-deep .ant-form-item-label > label {
+  color: #003D79;
+  font-weight: 500;
+}

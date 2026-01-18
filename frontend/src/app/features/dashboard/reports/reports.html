@@ -1,0 +1,51 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1>Reports</h1>
+  </div>
+  
+  <div class="reports-grid">
+    <nz-card nzTitle="Project Progress Report" [nzExtra]="downloadBtn1">
+      <p>Generate comprehensive project progress report with milestone status</p>
+    </nz-card>
+    
+    <nz-card nzTitle="Milestone Status Report" [nzExtra]="downloadBtn2">
+      <p>View detailed milestone completion status across all projects</p>
+    </nz-card>
+    
+    <nz-card nzTitle="User Activity Report" [nzExtra]="downloadBtn3">
+      <p>Track user activities and contributions to the system</p>
+    </nz-card>
+    
+    <nz-card nzTitle="Custom Report" [nzExtra]="downloadBtn4">
+      <p>Create custom reports with specific filters and criteria</p>
+    </nz-card>
+  </div>
+  
+  <ng-template #downloadBtn1>
+    <button nz-button nzType="primary" nzSize="small">
+      <span nz-icon nzType="download"></span>
+      Generate
+    </button>
+  </ng-template>
+  
+  <ng-template #downloadBtn2>
+    <button nz-button nzType="primary" nzSize="small">
+      <span nz-icon nzType="download"></span>
+      Generate
+    </button>
+  </ng-template>
+  
+  <ng-template #downloadBtn3>
+    <button nz-button nzType="primary" nzSize="small">
+      <span nz-icon nzType="download"></span>
+      Generate
+    </button>
+  </ng-template>
+  
+  <ng-template #downloadBtn4>
+    <button nz-button nzType="primary" nzSize="small">
+      <span nz-icon nzType="download"></span>
+      Generate
+    </button>
+  </ng-template>
+</div>

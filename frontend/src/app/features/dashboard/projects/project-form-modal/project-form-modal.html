@@ -1,0 +1,97 @@
+<nz-modal
+  [(nzVisible)]="visible"
+  [nzTitle]="modalTitle"
+  [nzClosable]="true"
+  [nzMaskClosable]="false"
+  [nzWidth]="600"
+  (nzOnCancel)="handleCancel()"
+  [nzFooter]="modalFooter"
+>
+  <ng-container *nzModalContent>
+    <form nz-form [formGroup]="form" nzLayout="vertical">
+      <nz-form-item>
+        <nz-form-label nzRequired>Project Code</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter project code (max 50 characters)">
+          <input nz-input formControlName="code" placeholder="e.g., TRANS-2026" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Project Name</nz-form-label>
+        <nz-form-control nzErrorTip="Please enter project name (max 200 characters)">
+          <input nz-input formControlName="name" placeholder="Enter project name" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label>Description</nz-form-label>
+        <nz-form-control>
+          <textarea
+            nz-input
+            formControlName="description"
+            placeholder="Enter project description"
+            [nzAutosize]="{ minRows: 3, maxRows: 6 }"
+          ></textarea>
+        </nz-form-control>
+      </nz-form-item>
+
+      <div nz-row [nzGutter]="16">
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label>Start Date</nz-form-label>
+            <nz-form-control>
+              <nz-date-picker
+                formControlName="startDate"
+                nzFormat="dd MMM yyyy"
+                nzPlaceHolder="Select start date"
+                style="width: 100%"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <div nz-col [nzSpan]="12">
+          <nz-form-item>
+            <nz-form-label>End Date</nz-form-label>
+            <nz-form-control>
+              <nz-date-picker
+                formControlName="endDate"
+                nzFormat="dd MMM yyyy"
+                nzPlaceHolder="Select end date"
+                style="width: 100%"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+
+      <nz-form-item>
+        <nz-form-label nzRequired>Status</nz-form-label>
+        <nz-form-control>
+          <nz-select formControlName="status" nzPlaceHolder="Select status">
+            <nz-option
+              *ngFor="let option of statusOptions"
+              [nzValue]="option.value"
+              [nzLabel]="option.label"
+            ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </ng-container>
+
+  <ng-template #modalFooter>
+    <button nz-button nzType="default" (click)="handleCancel()" [disabled]="isSubmitting">
+      Cancel
+    </button>
+    <button
+      nz-button
+      nzType="primary"
+      (click)="handleSubmit()"
+      [nzLoading]="isSubmitting"
+      [disabled]="isSubmitting"
+    >
+      {{ isEditMode ? 'Update' : 'Create' }}
+    </button>
+  </ng-template>
+</nz-modal>

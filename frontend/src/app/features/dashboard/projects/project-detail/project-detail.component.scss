@@ -1,0 +1,202 @@
+.page-container {
+  padding: 16px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 12px;
+}
+
+.back-button {
+  padding: 0;
+  color: #0066CC;
+  font-size: 13px;
+  
+  &:hover {
+    color: #003D79;
+  }
+}
+
+.project-header {
+  background: white;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0, 61, 121, 0.08);
+  border: 1px solid #E8EBF0;
+  
+  .header-content {
+    .title-section {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      
+      .title-icon {
+        font-size: 24px;
+        color: #0066CC;
+        background: #E6F0FF;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+      
+      .title-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 2px;
+      }
+      
+      h1 {
+        color: #003D79;
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      
+      .project-code {
+        color: #8C8C8C;
+        font-size: 13px;
+        margin: 0;
+      }
+    }
+  }
+}
+
+.project-tabs {
+  :host ::ng-deep {
+    .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab {
+      background: white;
+      border-color: #E8EBF0;
+      
+      &.ant-tabs-tab-active {
+        background: #E6F0FF;
+        border-color: #0066CC;
+        
+        .ant-tabs-tab-btn {
+          color: #003D79;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 16px 0;
+  
+  .info-card {
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 61, 121, 0.08);
+    border: 1px solid #E8EBF0;
+    border-radius: 8px;
+    
+    :host ::ng-deep {
+      .ant-card-head {
+        background: #F0F5FF;
+        border-bottom: 2px solid #E6F0FF;
+        padding: 12px 16px;
+        
+        .ant-card-head-title {
+          color: #003D79;
+          font-weight: 600;
+          font-size: 15px;
+        }
+      }
+      
+      .ant-card-body {
+        padding: 16px;
+      }
+      
+      .ant-descriptions-item-label {
+        font-size: 13px;
+      }
+      
+      .ant-descriptions-item-content {
+        font-size: 13px;
+      }
+    }
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    max-width: 600px;
+    
+    .stat-card {
+      box-shadow: 0 2px 8px rgba(0, 61, 121, 0.08);
+      border: 1px solid #E8EBF0;
+      border-radius: 8px;
+      
+      :host ::ng-deep {
+        .ant-card-body {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          padding: 14px;
+        }
+      }
+      
+      .stat-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        flex-shrink: 0;
+        
+        &.workstreams {
+          background: linear-gradient(135deg, #722ED1 0%, #531DAB 100%);
+          color: white;
+        }
+        
+        &.milestones {
+          background: linear-gradient(135deg, #13C2C2 0%, #08979C 100%);
+          color: white;
+        }
+      }
+      
+      .stat-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        
+        .stat-value {
+          font-size: 20px;
+          font-weight: 700;
+          color: #003D79;
+          line-height: 1;
+        }
+        
+        .stat-label {
+          font-size: 12px;
+          color: #8C8C8C;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  .empty-state {
+    text-align: center;
+    color: #8C8C8C;
+    padding: 32px;
+    margin: 0;
+    font-size: 13px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}

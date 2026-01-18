@@ -1,0 +1,124 @@
+.app-layout {
+  min-height: 100vh;
+}
+
+.header {
+  background: #003D79;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0, 61, 121, 0.15);
+  position: relative;
+  z-index: 10;
+}
+
+.header-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  height: 40px;
+}
+
+.app-name {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.main-layout {
+  flex: 1;
+}
+
+.sidebar {
+  background: #ffffff;
+  border-right: 1px solid #E8EBF0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+:host ::ng-deep .sidebar .ant-menu {
+  background: #ffffff;
+  border-right: none;
+}
+
+:host ::ng-deep .sidebar .ant-menu-item {
+  color: #595959;
+  margin: 4px 8px;
+  border-radius: 6px;
+  
+  &:hover {
+    background: #F0F5FF;
+    color: #0066CC;
+  }
+  
+  &.ant-menu-item-selected {
+    background: #E6F0FF;
+    color: #003D79;
+    font-weight: 600;
+    
+    &::after {
+      border-right-color: #0066CC;
+      border-right-width: 3px;
+    }
+  }
+  
+  a {
+    color: inherit;
+    
+    &:hover {
+      color: #0066CC;
+    }
+  }
+  
+  .anticon {
+    font-size: 16px;
+  }
+}
+
+.content-layout {
+  background: #F5F7FA;
+}
+
+.content {
+  margin: 24px;
+  padding: 0;
+  background: transparent;
+  min-height: 280px;
+}
+
+:host ::ng-deep .ant-layout-content {
+  background: transparent;
+}
+
+.inner-content {
+  h1 {
+    color: #003D79;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #8C8C8C;
+    font-size: 14px;
+  }
+}
