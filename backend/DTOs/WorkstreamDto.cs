@@ -8,7 +8,12 @@ public class WorkstreamDto
     public Guid ProjectId { get; set; }
     public Guid? LeaderId { get; set; }
     public string? LeaderName { get; set; }
+    public string Status { get; set; } = "Active";
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
     public int OutputCount { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
 }
 
 public class CreateWorkstreamDto
@@ -17,4 +22,7 @@ public class CreateWorkstreamDto
     public string? Description { get; set; }
     public Guid ProjectId { get; set; }
     public Guid? LeaderId { get; set; }
+    public string Status { get; set; } = "Active";
+    public DateTime? StartDate { get; set; }
+    public DateTime? EndDate { get; set; }
 }

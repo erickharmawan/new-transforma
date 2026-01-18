@@ -28,6 +28,14 @@ public class Workstream
     
     public int OrderIndex { get; set; }
     
+    [Required]
+    [MaxLength(50)]
+    public string Status { get; set; } = "Active";
+    
+    public DateTime? StartDate { get; set; }
+    
+    public DateTime? EndDate { get; set; }
+    
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
     public DateTime? UpdatedAt { get; set; }

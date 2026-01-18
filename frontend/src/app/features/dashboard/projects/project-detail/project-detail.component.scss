@@ -1,3 +1,5 @@
+@import './milestone-detail-styles.scss';
+
 .page-container {
   padding: 16px;
   max-width: 1400px;
@@ -220,10 +222,26 @@
         margin-right: 6px;
         transition: all 0.4s ease;
       }
-      
-      .ant-badge {
+            .tab-title-content {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+            .ant-badge {
         transform: scale(0.9);
         transition: transform 0.3s ease;
+        
+        ::ng-deep .ant-badge-count {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          min-width: 20px !important;
+          height: 20px !important;
+          border-radius: 10px !important;
+          padding: 0 6px !important;
+          line-height: 20px !important;
+          font-size: 12px !important;
+        }
       }
       
       &:hover {
@@ -277,9 +295,18 @@
         .ant-badge {
           transform: scale(1.05);
           
-          .ant-badge-count {
+          ::ng-deep .ant-badge-count {
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-width: 20px !important;
+            height: 20px !important;
+            border-radius: 10px !important;
+            padding: 0 6px !important;
+            line-height: 20px !important;
+            font-size: 12px !important;
           }
         }
         
@@ -641,4 +668,353 @@
   justify-content: center;
   align-items: center;
   min-height: 300px;
+}
+
+// Workstreams Styles
+.workstreams-card {
+  border-top: 3px solid #0166CC;
+  
+  .workstreams-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #F0F0F0;
+    
+    .header-left {
+      h3 {
+        margin: 0 0 4px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #003D79;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        
+        .header-icon {
+          font-size: 20px;
+          color: #722ED1;
+        }
+      }
+      
+      p {
+        margin: 0;
+        color: #8C8C8C;
+        font-size: 13px;
+      }
+    }
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    
+    .empty-icon {
+      font-size: 64px;
+      color: #D9D9D9;
+      margin-bottom: 16px;
+      display: block;
+    }
+    
+    h4 {
+      color: #595959;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      color: #8C8C8C;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.workstreams-table {
+  ::ng-deep {
+    .ant-table {
+      font-size: 13px;
+    }
+    
+    .ant-table-thead > tr > th {
+      background: linear-gradient(135deg, #E6F0FF 0%, #D6E8FF 50%, #C7DFFF 100%);
+      color: #003D79;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 12px 16px;
+      border-bottom: 2px solid #0166CC;
+    }
+    
+    .ant-table-tbody > tr {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: #F5F9FF;
+        box-shadow: 0 2px 8px rgba(1, 102, 204, 0.1);
+      }
+      
+      > td {
+        padding: 12px 16px;
+        vertical-align: middle;
+      }
+    }
+  }
+  
+  .workstream-name {
+    color: #003D79;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .workstream-desc {
+    color: #595959;
+    font-size: 13px;
+    display: block;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .date-text {
+    color: #8C8C8C;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+  }
+  
+  // Output expanded row styles
+  .output-expanded-row {
+    background: #F5F9FF !important;
+    padding: 0 !important;
+    
+    .output-section {
+      padding: 16px;
+      
+      .output-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        
+        h4 {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin: 0;
+          color: #003D79;
+          font-size: 14px;
+          font-weight: 600;
+          
+          .anticon {
+            color: #0166CC;
+            font-size: 16px;
+          }
+        }
+      }
+      
+      .output-empty {
+        text-align: center;
+        padding: 40px 20px;
+        color: #8C8C8C;
+        
+        p {
+          margin-top: 12px;
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  
+  .output-table {
+    background: white;
+    border-radius: 6px;
+    overflow: hidden;
+    
+    ::ng-deep {
+      .ant-table-thead > tr > th {
+        background: #FAFAFA;
+        color: #595959;
+        font-weight: 600;
+        font-size: 12px;
+      }
+      
+      .ant-table-tbody > tr {
+        &:hover {
+          background-color: #F0F5FF;
+        }
+      }
+    }
+  }
+}
+
+// Milestones styles
+.milestones-card {
+  border-top: 3px solid #0166CC;
+  
+  .milestones-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #E6F0FF 0%, #D6E8FF 50%, #C7DFFF 100%);
+    border-bottom: 2px solid #C7DFFF;
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      
+      .title-section {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        
+        .header-icon {
+          font-size: 20px;
+          color: #0166CC;
+        }
+        
+        .title-text {
+          h3 {
+            margin: 0 0 4px 0;
+            color: #003D79;
+            font-size: 16px;
+            font-weight: 600;
+          }
+          
+          p {
+            margin: 0;
+            color: #8C8C8C;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+  
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    
+    .empty-icon {
+      font-size: 64px;
+      color: #D9D9D9;
+      margin-bottom: 16px;
+      display: block;
+    }
+    
+    h4 {
+      color: #595959;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      color: #8C8C8C;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.milestones-table {
+  ::ng-deep {
+    .ant-table {
+      font-size: 13px;
+    }
+    
+    .ant-table-thead > tr > th {
+      background: linear-gradient(135deg, #E6F0FF 0%, #D6E8FF 50%, #C7DFFF 100%);
+      color: #003D79;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 12px 16px;
+      border-bottom: 2px solid #0166CC;
+    }
+    
+    .ant-table-tbody > tr {
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background-color: #F5F9FF;
+        box-shadow: 0 2px 8px rgba(1, 102, 204, 0.1);
+      }
+      
+      > td {
+        padding: 12px 16px;
+        vertical-align: middle;
+      }
+    }
+  }
+  
+  .milestone-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .milestone-name {
+      color: #003D79;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  
+  .critical-icon {
+    color: #FF4D4F;
+    font-size: 16px;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+  
+  .workstream-name-text {
+    color: #0166CC;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  
+  .pic-name-text {
+    color: #595959;
+    font-size: 13px;
+  }
+  
+  .date-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    
+    .date-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      color: #595959;
+      
+      .date-icon {
+        color: #8C8C8C;
+        font-size: 12px;
+      }
+      
+      .date-label {
+        color: #8C8C8C;
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .progress-cell {
+    min-width: 120px;
+    
+    ::ng-deep .ant-progress {
+      margin: 0;
+    }
+  }
 }

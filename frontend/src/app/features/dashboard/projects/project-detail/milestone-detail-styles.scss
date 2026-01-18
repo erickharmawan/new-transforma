@@ -1,0 +1,63 @@
+// Milestone Detail Modal Styles
+.milestone-detail {
+  .detail-section {
+    margin-bottom: 24px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #003D79;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #E8EBF0;
+      
+      .anticon {
+        color: #0166CC;
+        font-size: 16px;
+      }
+    }
+    
+    .milestone-name-text {
+      color: #003D79;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+  
+  .progress-container {
+    padding: 16px 0;
+  }
+  
+  ::ng-deep {
+    .ant-descriptions-bordered .ant-descriptions-item-label {
+      background: #F5F9FF;
+      color: #595959;
+      font-weight: 500;
+      font-size: 13px;
+    }
+    
+    .ant-descriptions-bordered .ant-descriptions-item-content {
+      color: #262626;
+      font-size: 13px;
+    }
+  }
+}
+
+.modal-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+  .approval-buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
